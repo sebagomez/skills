@@ -4,7 +4,7 @@ My personal agent skills for omp (oh-my-pi). Matt Pocock's skills stay upstream 
 
 ## Skills
 
-- **update-pocock-skills** — pulls the Pocock clone at /tmp/pocock-skills, shows what changed upstream, guards locally edited skills with a checksum manifest, and copies the picks into ~/.omp/agent/skills/.
+- **update-pocock-skills** — asks which harness to target (omp by default), clones or pulls the Pocock repo at /tmp/pocock-skills, installs the six wanted skills plus their dependencies, shows what changed upstream, and guards locally edited skills with a checksum manifest.
 
 ## Install
 
