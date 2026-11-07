@@ -36,10 +36,10 @@ The install set is the wanted skills + their dependencies + setup-matt-pocock-sk
 
 ## Steps
 
-1. **Ask which harness.** If `~/.agents/skills/` exists on this machine, it is the canonical store (see Facts): target it and do not ask — every harness sees the skills through its symlinks. Otherwise ask the user which harness the skills are for, with omp as the default. The answer sets the skills dir:
-   - omp → `~/.omp/agent/skills/`
-   - pi → `~/.pi/agent/skills/`
+1. **Ask which harness.** If `~/.agents/skills/` exists on this machine, it is the canonical store (see Facts): target it and do not ask — every harness sees the skills through its symlinks. Otherwise ask the user which harness the skills are for, with pi as the default. The answer sets the skills dir:
+   - pi & omp → `~/.pi/agent/skills/`
    - Claude Code → `~/.claude/skills/`
+   - Codex → `~/.codex/skills/`
    - anything else → ask the user for the skills folder path.
    
    If the user names the harness in the request itself, use it without asking. Note: a host app is not the harness — inside bb, an omp agent still uses the omp skills dir.
