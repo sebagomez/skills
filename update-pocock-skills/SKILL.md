@@ -10,6 +10,7 @@ Facts:
 - Source clone: `/tmp/pocock-skills` (github.com/mattpocock/skills). Treat it as a pristine mirror — never edit files inside it.
 - A manifest at `<skills dir>/.pocock-manifest` records the last successful sync for that harness: first line is the upstream commit hash, the remaining lines are `<sha256>  <path relative to the skills dir>` for every installed file. It is how local edits are detected.
 - Only the wanted skills below (plus their dependencies) are managed by this skill. Every other folder in the skills dir (the user's own skills, including this one) is left untouched.
+- The user's machines keep one canonical skills store at `~/.agents/skills/`, symlinked into each harness's own skills folder. When that store exists it is the copy target: copying there reaches every harness, and the managed folders are the real folders inside it. Never run the copy step against a harness folder whose entries are symlinks — step 6's `rm -rf` would delete the symlink and leave a real folder behind, silently disconnecting that skill from the store.
 
 ## Wanted skills and their dependencies
 
@@ -35,7 +36,7 @@ The install set is the wanted skills + their dependencies + setup-matt-pocock-sk
 
 ## Steps
 
-1. **Ask which harness.** Ask the user which harness the skills are for, with omp as the default. The answer sets the skills dir:
+1. **Ask which harness.** If `~/.agents/skills/` exists on this machine, it is the canonical store (see Facts): target it and do not ask — every harness sees the skills through its symlinks. Otherwise ask the user which harness the skills are for, with omp as the default. The answer sets the skills dir:
    - omp → `~/.omp/agent/skills/`
    - pi → `~/.pi/agent/skills/`
    - Claude Code → `~/.claude/skills/`
