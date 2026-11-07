@@ -46,7 +46,7 @@ The install set is the wanted skills + their dependencies + setup-matt-pocock-sk
 
 2. **Get the latest upstream.** If `/tmp/pocock-skills` does not exist, run: `git clone --depth 1 https://github.com/mattpocock/skills.git /tmp/pocock-skills`. Otherwise run: `git -C /tmp/pocock-skills pull`.
 
-3. **Read the last sync state.** Read `<skills dir>/.pocock-manifest`. If it does not exist, this is a first install for this harness: skip steps 4 and 5, copy the whole install set in step 6, then do steps 7 and 8.
+3. **Read the last sync state.** Read `<skills dir>/.pocock-manifest`. If it does not exist, this is a first install for this harness, and there is no sync history to protect local content — so check before replacing anything: for each folder of the install set that already exists in the skills dir, compare it with the clone (`diff -r <skills dir>/<skill-name> /tmp/pocock-skills/skills/<category>/<skill-name>`). Identical means a manual install of the same upstream version: safe to manage from now on, no need to ask. Different means unknown content — the user's own skill with a colliding name, or a locally edited copy: name it and ask the user — replace, skip that skill, or stop — and proceed only as directed. Then skip steps 4 and 5, copy the install set in step 6, and do steps 7 and 8.
 
 4. **Show what changed upstream.** Run `git -C /tmp/pocock-skills log --oneline <last-synced-commit>..HEAD -- <the install set's repo paths, each prefixed with skills/>`. If the manifest's commit is not present in the clone (the clone was re-created, e.g. after /tmp was cleaned), skip the changelog and treat the run as a refresh. If the log is empty and step 5 finds no differences, report "Pocock skills already up to date" and stop.
 
