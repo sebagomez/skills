@@ -1,6 +1,6 @@
 # skills
 
-My personal agent skills for omp (oh-my-pi). Matt Pocock's skills stay upstream at github.com/mattpocock/skills — pulled read-only, never forked; mine live here.
+My personal agent skills for omp (oh-my-pi). Matt Pocock's skills stay upstream at [github.com/mattpocock/skills](github.com/mattpocock/skills) — pulled read-only, never forked; mine live here.
 
 ## Skills
 
